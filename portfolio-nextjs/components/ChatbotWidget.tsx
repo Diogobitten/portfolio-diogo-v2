@@ -161,7 +161,8 @@ export default function ChatbotWidget() {
 
       {/* Chat window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 max-h-[500px] bg-background/80 backdrop-blur-md border border-border rounded-xl shadow-lg flex flex-col overflow-hidden">
+        <div className="fixed z-50 flex flex-col overflow-hidden border border-border shadow-lg bg-background/80 backdrop-blur-md
+          bottom-0 left-0 right-0 h-dvh sm:bottom-24 sm:right-6 sm:left-auto sm:h-auto sm:w-96 sm:max-h-[500px] sm:rounded-xl">
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-border">
             <span className="text-text-primary font-semibold text-sm">Diobot</span>
@@ -177,7 +178,7 @@ export default function ChatbotWidget() {
           </div>
 
           {/* Messages area */}
-          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 min-h-[200px] max-h-[350px] chatbot-scroll">
+          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 chatbot-scroll">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -213,7 +214,7 @@ export default function ChatbotWidget() {
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Digite sua mensagem..."
-              className="flex-1 bg-background border border-border rounded-lg px-3 py-2 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-text-secondary transition-colors"
+              className="flex-1 bg-background border border-border rounded-lg px-3 py-2 text-base text-text-primary placeholder:text-text-muted focus:outline-none focus:border-text-secondary transition-colors"
             />
             <button
               onClick={sendMessage}
