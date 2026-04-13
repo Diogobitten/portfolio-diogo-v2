@@ -1,0 +1,68 @@
+<!-- sidebar.html -->
+<div class="bg-gray-800 w-20 min-h-full flex flex-col transition-all duration-300 rounded-r-lg" id="sidebar">
+    <div class="flex items-center justify-between p-4">
+        <h1 class="text-2xl font-bold sidebar-text"></h1>
+        <button class="text-gray-400 hover:text-white focus:outline-none" id="toggleSidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <nav class="flex-1 px-4">
+        <ul>
+            <li class="my-2">
+                <a class="flex items-center p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded" href="index.html">
+                    <i class="fas fa-home mr-3"></i>
+                    <span class="sidebar-text">Home</span>
+                </a>
+            </li>
+            <li class="my-2">
+                <a class="flex items-center p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded" href="sobre-mim.html">
+                    <i class="fas fa-user mr-3"></i>
+                    <span class="sidebar-text">Sobre Mim</span>
+                </a>
+            </li>
+            <li class="my-2">
+                <a class="flex items-center p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded" href="projetos.html">
+                    <i class="fas fa-briefcase mr-3"></i>
+                    <span class="sidebar-text">Projetos</span>
+                </a>
+            </li>
+        </ul>
+
+
+        <!-- Linha divisória -->
+        <div class="mt-10 mb-5 border-t border-gray-600 mx-4 my-4"></div>
+
+        <!-- Botão de seleção de idioma na sidebar -->
+        <div class="p-1 flex justify-center">
+            <div class="relative inline-block w-full">
+                <button id="languageButton" 
+                    class="flex items-center justify-center px-2 py-1 bg-gray-800 text-white rounded-md border border-gray-600 hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 w-full text-sm transition-all duration-300">
+                    <i class="fas fa-globe text-base"></i>
+                    <span id="selectedLanguage" class="ml-1 language-text">PT</span>
+                    <i class="fas fa-chevron-down ml-auto text-xs language-text"></i>
+                </button>
+
+                <!-- Opções de idioma -->
+                <div id="languageOptions" class="hidden absolute left-0 mt-2 w-full bg-gray-800 text-white border border-gray-600 rounded-md shadow-lg z-50 text-sm">
+                    <button class="flex items-center px-3 py-1 w-full hover:bg-gray-700 focus:outline-none language-option" data-lang="pt">
+                        🇧🇷 <span class="ml-1 language-text">Português</span>
+                    </button>
+                    <button class="flex items-center px-3 py-1 w-full hover:bg-gray-700 focus:outline-none language-option" data-lang="en">
+                        🇺🇸 <span class="ml-1 language-text">English</span>
+                    </button>
+                    <button class="flex items-center px-3 py-1 w-full hover:bg-gray-700 focus:outline-none language-option" data-lang="es">
+                        🇪🇸 <span class="ml-1 language-text">Español</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+    </nav>
+
+    <div class="mt-auto flex justify-start items-start p-4 logo-container">
+        <img alt="Logo do portfólio de Diogo" class="logo w-8 h-auto" src="./img/db.png" />
+    </div>
+</div>
