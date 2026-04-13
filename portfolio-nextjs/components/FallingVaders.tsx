@@ -175,12 +175,17 @@ export default function FallingVaders({ onScore }: { onScore?: (score: number) =
     createVaders();
     draw();
 
+    let lastWidth = canvas.width;
     const parent = canvas.parentElement;
     parent?.addEventListener('mousemove', onMouseMove);
     parent?.addEventListener('mouseleave', onMouseLeave);
     window.addEventListener('resize', () => {
       resize();
-      createVaders();
+      // Only recreate vaders if width changed (avoid mobile address bar resize)
+      if (canvas.width !== lastWidth) {
+        lastWidth = canvas.width;
+        createVaders();
+      }
     });
 
     return () => {

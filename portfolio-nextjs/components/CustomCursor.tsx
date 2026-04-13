@@ -1,15 +1,19 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.matchMedia('(pointer: coarse)').matches);
+    checkMobile();
+
     const dot = dotRef.current;
     const ring = ringRef.current;
-    if (!dot || !ring) return;
+    if (!dot || !ring || isMobile) return;
 
     let mouseX = -100;
     let mouseY = -100;
@@ -33,7 +37,9 @@ export default function CustomCursor() {
     animate();
 
     return () => document.removeEventListener('mousemove', onMouseMove);
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) return null;
 
   return (
     <>

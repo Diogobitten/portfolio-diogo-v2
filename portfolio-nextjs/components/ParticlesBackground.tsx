@@ -137,12 +137,16 @@ export default function ParticlesBackground() {
     createParticles();
     draw();
 
+    let lastWidth = canvas.width;
     const parent = canvas.parentElement;
     parent?.addEventListener('mousemove', onMouseMove);
     parent?.addEventListener('mouseleave', onMouseLeave);
     window.addEventListener('resize', () => {
       resize();
-      createParticles();
+      if (canvas.width !== lastWidth) {
+        lastWidth = canvas.width;
+        createParticles();
+      }
     });
 
     return () => {
