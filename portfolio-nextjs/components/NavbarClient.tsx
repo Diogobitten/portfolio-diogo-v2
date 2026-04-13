@@ -46,7 +46,7 @@ export default function NavbarClient({ navLinks }: NavbarClientProps) {
 
       {/* Mobile menu overlay */}
       {isOpen && (
-        <div className="fixed inset-0 top-[57px] z-40 bg-background/95 backdrop-blur-md">
+        <div className="fixed inset-0 top-[57px] z-[100] h-screen bg-background/95 backdrop-blur-3xl border-t border-border">
           <div className="flex flex-col items-center gap-6 pt-12">
             {navLinks.map((link) => (
               <Link

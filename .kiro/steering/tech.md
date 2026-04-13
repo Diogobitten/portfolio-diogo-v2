@@ -71,3 +71,5 @@ git push origin main
 - Next.js: Default cursor is hidden globally; CustomCursor component renders custom dot + ring
 - Next.js: GitHub API responses (repos + READMEs) are cached for 1h via `next: { revalidate: 3600 }` and `Cache-Control` headers
 - Next.js: README fetches go through `/api/github/readme` route (with auth token) instead of direct GitHub API calls from client
+- Next.js: Mobile menu overlay uses `bg-background/95 backdrop-blur-3xl` with `z-[100]` to stay above all canvas elements
+- Next.js: Header uses `z-[100]` to ensure stacking context allows mobile menu to overlay hero animations
