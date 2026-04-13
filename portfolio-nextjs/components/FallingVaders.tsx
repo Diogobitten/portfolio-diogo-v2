@@ -56,7 +56,7 @@ export default function FallingVaders({ onScore }: { onScore?: (score: number) =
           x: Math.random() * canvas.width,
           y: -(Math.random() * canvas.height),
           size: 16 + Math.random() * 12,
-          speed: 0.15 + Math.random() * 0.3,
+          speed: 0.4 + Math.random() * 0.5,
           wobble: 0,
           wobbleSpeed: 0.005 + Math.random() * 0.01,
           wobbleOffset: Math.random() * Math.PI * 2,
