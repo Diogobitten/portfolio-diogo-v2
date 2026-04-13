@@ -54,7 +54,7 @@ export default function FallingVaders({ onScore }: { onScore?: (score: number) =
       for (let i = 0; i < VADER_COUNT; i++) {
         vaders.push({
           x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
+          y: -(Math.random() * canvas.height),
           size: 16 + Math.random() * 12,
           speed: 0.15 + Math.random() * 0.3,
           wobble: 0,
