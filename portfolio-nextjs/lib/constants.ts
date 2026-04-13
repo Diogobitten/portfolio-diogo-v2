@@ -1,5 +1,5 @@
 // URL do chatbot backend
-export const CHATBOT_API_URL = 'https://chatbot-izuj.onrender.com/chat';
+export const CHATBOT_API_URL = '/api/chat';
 
 // URL da API de câmbio
 export const CURRENCY_API_URL = 'https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL';

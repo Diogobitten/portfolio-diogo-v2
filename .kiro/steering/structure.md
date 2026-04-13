@@ -30,7 +30,7 @@
 │   ├── icon.png             # App icon (db.png, auto-detected by Next.js)
 │   ├── projetos/page.tsx    # Projects page
 │   ├── sobre-mim/page.tsx   # About me page
-│   └── api/                 # API routes (github, weather)
+│   └── api/                 # API routes (github, weather, chat)
 ├── components/
 │   ├── HeroSection.tsx      # Hero section (client component with score state)
 │   ├── ParallaxPhoto.tsx    # Parallax depth photo (df.png foreground + d2.jpg background, scroll + mouse)
@@ -76,7 +76,8 @@
 - ParallaxPhoto layers: d2.jpg (background, z-0) → df.png (foreground, z-10, scale-125, object-contain).
 - Custom cursor replaces default cursor globally via `cursor: none` in globals.css.
 - Navbar uses `db.png` as logo icon instead of `</>` text.
-- Favicon is `app/icon.png` (db.png), auto-detected by Next.js.
+- Chatbot uses OpenAI Assistants API (assistant ID: asst_KyYsohF9EIe6Mj23hfzUfJQX) via `/api/chat` route, no external backend.
+- Custom dark scrollbar globally, extra dark variant for chatbot (`.chatbot-scroll` class).
 
 ## Key Images
 - `diogo.png` — Main profile photo (black background, used in OpenGraph metadata)

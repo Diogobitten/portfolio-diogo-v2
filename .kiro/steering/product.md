@@ -7,7 +7,7 @@ Showcase projects, skills, professional experience, and provide a downloadable C
 
 ## Key Features
 - Dynamic project cards fetched from GitHub API (with media extracted from repo READMEs)
-- AI-powered chatbot ("Diobot") backed by an external Python/Flask API hosted on Render
+- AI-powered chatbot ("Diobot") usando OpenAI Assistants API direto via Next.js API route (sem backend externo)
 - FAQ-based chatbot variant for static pages
 - Real-time weather display (Rio de Janeiro) via OpenWeather API
 - USD/EUR to BRL currency exchange rates via AwesomeAPI
@@ -19,6 +19,7 @@ Showcase projects, skills, professional experience, and provide a downloadable C
 - Animated particle network background with mouse interactivity (connection lines + repulsion)
 - Falling Space Invaders (vader.png) with mouse-to-destroy explosion effect and kill score counter
 - Custom cursor (white dot + trailing ring, replaces default cursor site-wide)
+- Custom dark scrollbar site-wide, extra dark no chatbot
 - DB logo (`db.png`) used as navbar icon and favicon
 
 ## Target Audience

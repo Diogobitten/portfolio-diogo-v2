@@ -36,3 +36,39 @@ a, button, [role="button"] {
 .animate-fade-in {
   animation: fade-in 0.3s ease-out;
 }
+
+/* Custom scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333333 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Chatbot scrollbar — darker */
+.chatbot-scroll {
+  scrollbar-color: #1a1a1a transparent;
+}
+
+.chatbot-scroll::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+}
+
+.chatbot-scroll::-webkit-scrollbar-thumb:hover {
+  background: #2a2a2a;
+}

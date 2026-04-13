@@ -24,7 +24,8 @@
 - Next.js API routes in `portfolio-nextjs/app/api/` (github, weather)
 - `api/github.js` — proxies GitHub API requests, uses `process.env.GITHUB_API_KEY`
 - `api/weather.js` — proxies OpenWeather API, uses `process.env.OPENWEATHER_API_KEY`
-- External chatbot backend: Python/Flask hosted on Render (`https://chatbot-izuj.onrender.com/chat`)
+- External chatbot backend: removed — now uses OpenAI Assistants API via Next.js API route `/api/chat`
+- OpenAI SDK (`openai` npm package) for Assistants API
 
 ## External APIs
 - GitHub REST API — fetch user repositories
@@ -33,9 +34,10 @@
 - MyMemory Translation API — runtime page translation
 - OpenAI API — used by the external chatbot backend (not in this repo)
 
+- `OPENAI_API_KEY` — OpenAI API key (for Diobot chatbot via Assistants API)
+
 ## Hosting
-- Frontend: Vercel
-- Chatbot backend: Render
+- Frontend: Vercel (Next.js + serverless functions, including chatbot API)
 
 ## Environment Variables
 Required in `.env` (never committed):

@@ -177,7 +177,7 @@ export default function ChatbotWidget() {
           </div>
 
           {/* Messages area */}
-          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 min-h-[200px] max-h-[350px]">
+          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 min-h-[200px] max-h-[350px] chatbot-scroll">
             {messages.map((msg) => (
               <div
                 key={msg.id}
