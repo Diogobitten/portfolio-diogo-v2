@@ -161,8 +161,8 @@ export default function ChatbotWidget() {
 
       {/* Chat window */}
       {isOpen && (
-        <div className="fixed z-50 flex flex-col overflow-hidden border border-border shadow-lg bg-background/80 backdrop-blur-md
-          bottom-0 left-0 right-0 h-dvh sm:bottom-24 sm:right-6 sm:left-auto sm:h-auto sm:w-96 sm:max-h-[500px] sm:rounded-xl">
+        <div className="fixed z-[200] flex flex-col overflow-hidden border border-border shadow-lg bg-background/80 backdrop-blur-md
+          bottom-0 left-0 right-0 top-0 pt-[57px] sm:top-auto sm:pt-0 sm:bottom-24 sm:right-6 sm:left-auto sm:h-auto sm:w-96 sm:max-h-[500px] sm:rounded-xl">
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-border">
             <span className="text-text-primary font-semibold text-sm">Diobot</span>
