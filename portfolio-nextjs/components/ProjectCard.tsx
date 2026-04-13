@@ -16,19 +16,18 @@ export default function ProjectCard({ repo }: ProjectCardProps) {
     async function fetchReadme() {
       try {
         const response = await fetch(
-          `https://api.github.com/repos/${repo.owner.login}/${repo.name}/readme`,
-          {
-            headers: {
-              Accept: 'application/vnd.github.v3.raw',
-            },
-          }
+          `/api/github/readme?owner=${repo.owner.login}&repo=${repo.name}`
         );
         if (!response.ok) {
           setLoading(false);
           return;
         }
-        const readmeContent = await response.text();
-        const links = extractMediaLinks(repo.owner.login, repo.name, readmeContent);
+        const { content } = await response.json();
+        if (!content) {
+          setLoading(false);
+          return;
+        }
+        const links = extractMediaLinks(repo.owner.login, repo.name, content);
         setMedia(links);
       } catch {
         // Silently fail — will show placeholder

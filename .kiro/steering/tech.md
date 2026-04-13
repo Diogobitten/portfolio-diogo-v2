@@ -21,7 +21,7 @@
 
 ## Backend / Serverless Functions
 - Vercel serverless functions in `api/` directory (Node.js, ESM `export default`)
-- Next.js API routes in `portfolio-nextjs/app/api/` (github, weather)
+- Next.js API routes in `portfolio-nextjs/app/api/` (github, github/readme, weather, chat)
 - `api/github.js` — proxies GitHub API requests, uses `process.env.GITHUB_API_KEY`
 - `api/weather.js` — proxies OpenWeather API, uses `process.env.OPENWEATHER_API_KEY`
 - External chatbot backend: removed — now uses OpenAI Assistants API via Next.js API route `/api/chat`
@@ -69,4 +69,5 @@ git push origin main
 - Next.js: Canvas-based animations (particles, vaders) use `requestAnimationFrame` loops
 - Next.js: Mouse events for canvas components are attached to parent element (not canvas) since canvas has `pointer-events: none`
 - Next.js: Default cursor is hidden globally; CustomCursor component renders custom dot + ring
-- Next.js: Hero section background is `bg-black` to blend with profile photo background
+- Next.js: GitHub API responses (repos + READMEs) are cached for 1h via `next: { revalidate: 3600 }` and `Cache-Control` headers
+- Next.js: README fetches go through `/api/github/readme` route (with auth token) instead of direct GitHub API calls from client

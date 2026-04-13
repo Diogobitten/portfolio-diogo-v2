@@ -14,6 +14,7 @@ export async function GET() {
         headers: {
           Authorization: `Bearer ${process.env.GITHUB_API_KEY}`,
         },
+        next: { revalidate: 3600 }, // Cache for 1 hour
       }
     );
 
@@ -21,7 +22,10 @@ export async function GET() {
 
     return NextResponse.json(data, {
       status: 200,
-      headers: CORS_HEADERS,
+      headers: {
+        ...CORS_HEADERS,
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=7200',
+      },
     });
   } catch (error) {
     console.error('Erro ao conectar à API do GitHub:', error);
