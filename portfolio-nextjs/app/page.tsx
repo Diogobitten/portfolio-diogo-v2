@@ -6,13 +6,13 @@ import PodcastPlayer from '@/components/PodcastPlayer';
 import ContactSection from '@/components/ContactSection';
 
 export const metadata: Metadata = {
-  title: 'Diogo Bittencourt | Desenvolvedor Full-stack & Designer Gráfico',
+  title: 'Diogo Bittencourt | Software Developer & Designer Gráfico',
   description:
-    'Portfólio de Diogo Bittencourt — Desenvolvedor Full-stack & Designer Gráfico. Transformando ideias em realidade com código limpo, eficiente e escalável.',
+    'Portfólio de Diogo Bittencourt — Software Developer & Designer Gráfico. Transformando ideias em realidade com código limpo, eficiente e escalável.',
   openGraph: {
-    title: 'Diogo Bittencourt | Desenvolvedor Full-stack & Designer Gráfico',
+    title: 'Diogo Bittencourt | Software Developer & Designer Gráfico',
     description:
-      'Portfólio de Diogo Bittencourt — Desenvolvedor Full-stack & Designer Gráfico.',
+      'Portfólio de Diogo Bittencourt — Software Developer & Designer Gráfico.',
     images: ['/img/diogo.png'],
     type: 'website',
     locale: 'pt_BR',

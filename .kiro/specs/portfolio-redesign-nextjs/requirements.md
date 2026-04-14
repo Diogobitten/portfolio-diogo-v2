@@ -68,7 +68,7 @@ Redesign completo do portfólio pessoal de Diogo Bittencourt, migrando de um sit
 #### Critérios de Aceitação
 
 1. THE Hero_Section SHALL exibir o nome "Diogo Bittencourt" como título principal em destaque
-2. THE Hero_Section SHALL exibir uma tagline descritiva (ex: "Desenvolvedor Full-stack & Designer Gráfico")
+2. THE Hero_Section SHALL exibir uma tagline descritiva (ex: "Software Developer & Designer Gráfico")
 3. THE Hero_Section SHALL exibir um parágrafo curto de apresentação profissional
 4. THE Hero_Section SHALL exibir dois botões CTA: "Fale Comigo" e "Ver Projetos"
 5. WHEN o botão "Fale Comigo" for clicado, THE App SHALL rolar até a seção de contato ou abrir o Chatbot_Widget

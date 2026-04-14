@@ -56,7 +56,7 @@
 │   └── utils.ts
 ├── public/
 │   ├── img/                 # Static images (diogo.png, df.png, d2.jpg, d1.jpg, db.png, vader.png, etc.)
-│   └── docs/                # CV PDFs
+│   └── docs/                # CV PDFs (curriculo_Diogo_Bittencourt_dev_.pdf)
 └── package.json
 ```
 

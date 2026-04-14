@@ -180,7 +180,7 @@ interface HeroSectionProps {}
 
 // Conteúdo:
 // - Título: "Diogo Bittencourt"
-// - Tagline: "Desenvolvedor Full-stack & Designer Gráfico"
+// - Tagline: "Software Developer & Designer Gráfico"
 // - Parágrafo de apresentação
 // - Botões CTA: "Fale Comigo" (scroll/chatbot) + "Ver Projetos" (scroll)
 // - Foto perfil2.jpeg no lado direito (desktop), abaixo (mobile)

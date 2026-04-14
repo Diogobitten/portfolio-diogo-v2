@@ -5,11 +5,11 @@ import { SOCIAL_LINKS } from '@/lib/constants';
 export const metadata: Metadata = {
   title: 'Sobre Mim | Diogo Bittencourt',
   description:
-    'Conheça Diogo Bittencourt — Desenvolvedor Full-stack & Designer Gráfico. Formação, experiência profissional e habilidades.',
+    'Conheça Diogo Bittencourt — Software Developer & Designer Gráfico. Formação, experiência profissional e habilidades.',
   openGraph: {
     title: 'Sobre Mim | Diogo Bittencourt',
     description:
-      'Conheça Diogo Bittencourt — Desenvolvedor Full-stack & Designer Gráfico.',
+      'Conheça Diogo Bittencourt — Software Developer & Designer Gráfico.',
     images: ['/img/diogo.png'],
     type: 'website',
     locale: 'pt_BR',
@@ -34,14 +34,14 @@ export default function SobreMimPage() {
           Diogo Bittencourt
         </h1>
         <p className="mt-2 text-lg text-text-secondary">
-          Desenvolvedor Full-stack &amp; Designer Gráfico
+          Software Developer &amp; Designer Gráfico
         </p>
       </div>
 
       {/* Download CV + Social links */}
       <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
         <a
-          href="/docs/cv_diogo_bittencourt_dev_brasil.pdf"
+          href="/docs/curriculo_Diogo_Bittencourt_dev_.pdf"
           download="Curriculo_Diogo_Bittencourt.pdf"
           className="flex items-center gap-2 rounded-md border border-text-secondary px-6 py-2.5 text-sm font-semibold text-text-primary transition-colors hover:bg-surface-light"
         >
@@ -108,9 +108,7 @@ export default function SobreMimPage() {
           <strong className="text-text-primary">
             Sou Software Developer formado em Análise e Desenvolvimento de Sistemas pela FIAP
           </strong>
-          , com experiência em{' '}
-          <strong className="text-text-primary">Desenvolvedor Full Stack</strong>.
-          Atualmente, estou desenvolvendo{' '}
+          , com experiência em construção de{' '}
           <strong className="text-text-primary">
             APIs, automação de processos e integração de sistemas.{' '}
           </strong>
@@ -135,9 +133,9 @@ export default function SobreMimPage() {
             href={SOCIAL_LINKS.designPortfolio}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-text-primary underline underline-offset-4 transition-colors hover:text-white"
+            className="inline-block mt-4 rounded-md border border-text-secondary px-6 py-2.5 text-sm font-medium text-text-primary transition-colors hover:bg-surface-light"
           >
-            Confira os trabalhos de design aqui
+            Confira os trabalhos de design →
           </a>
           .
         </p>

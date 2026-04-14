@@ -4,11 +4,11 @@ import PortfolioSection from '@/components/PortfolioSection';
 export const metadata: Metadata = {
   title: 'Projetos | Diogo Bittencourt',
   description:
-    'Todos os projetos de Diogo Bittencourt — Desenvolvedor Full-stack & Designer Gráfico. Explore repositórios, aplicações e experimentos.',
+    'Todos os projetos de Diogo Bittencourt — Software Developer & Designer Gráfico. Explore repositórios, aplicações e experimentos.',
   openGraph: {
     title: 'Projetos | Diogo Bittencourt',
     description:
-      'Todos os projetos de Diogo Bittencourt — Desenvolvedor Full-stack & Designer Gráfico.',
+      'Todos os projetos de Diogo Bittencourt — Software Developer & Designer Gráfico.',
     images: ['/img/diogo.png'],
     type: 'website',
     locale: 'pt_BR',

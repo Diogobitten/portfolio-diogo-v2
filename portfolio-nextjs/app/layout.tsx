@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   ),
   title: "Diogo Bittencourt | Portfólio",
   description:
-    "Portfólio de Diogo Bittencourt — Desenvolvedor Full-stack & Designer Gráfico. Projetos, habilidades e experiência profissional.",
+    "Portfólio de Diogo Bittencourt — Software Developer & Designer Gráfico. Projetos, habilidades e experiência profissional.",
   openGraph: {
     title: "Diogo Bittencourt | Portfólio",
     description:
-      "Portfólio de Diogo Bittencourt — Desenvolvedor Full-stack & Designer Gráfico.",
+      "Portfólio de Diogo Bittencourt — Software Developer & Designer Gráfico.",
     images: [{ url: "/img/diogo.png", width: 1200, height: 1200, alt: "Diogo Bittencourt" }],
     type: "website",
     locale: "pt_BR",
