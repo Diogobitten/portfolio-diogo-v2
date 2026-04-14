@@ -25,7 +25,7 @@ interface Spark {
   color: string;
 }
 
-export default function FallingVaders({ onScore }: { onScore?: (score: number) => void }) {
+export default function FallingVaders({ onScore, onDamage }: { onScore?: (score: number) => void; onDamage?: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -118,6 +118,9 @@ export default function FallingVaders({ onScore }: { onScore?: (score: number) =
           if (v.y > canvas.height + v.size * imgRatio) {
             v.y = -v.size * imgRatio;
             v.x = Math.random() * canvas.width;
+            score--;
+            onScore?.(score);
+            onDamage?.();
           }
 
           // Check mouse collision
