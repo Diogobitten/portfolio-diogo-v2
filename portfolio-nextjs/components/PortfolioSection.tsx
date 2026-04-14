@@ -13,6 +13,8 @@ export default function PortfolioSection({ showAll = false }: PortfolioSectionPr
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const BATCH_SIZE = 6;
 
   useEffect(() => {
     async function fetchRepos() {
@@ -82,7 +84,7 @@ export default function PortfolioSection({ showAll = false }: PortfolioSectionPr
         <>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {repos.map((repo) => (
-              <ProjectCard key={repo.name} repo={repo} />
+              <ProjectCard key={repo.name} repo={repo} staticMedia={showAll} />
             ))}
           </div>
 

@@ -1,18 +1,39 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { GitHubRepo, RepoMedia } from '@/lib/types';
 import { extractMediaLinks } from '@/lib/utils';
 
 interface ProjectCardProps {
   repo: GitHubRepo;
+  staticMedia?: boolean;
 }
 
-export default function ProjectCard({ repo }: ProjectCardProps) {
+export default function ProjectCard({ repo, staticMedia = false }: ProjectCardProps) {
   const [media, setMedia] = useState<RepoMedia[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Intersection Observer — only load media when card is near viewport
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
+    if (!isVisible) return;
     async function fetchReadme() {
       try {
         const response = await fetch(
@@ -37,12 +58,13 @@ export default function ProjectCard({ repo }: ProjectCardProps) {
     }
 
     fetchReadme();
-  }, [repo.owner.login, repo.name]);
+  }, [repo.owner.login, repo.name, isVisible]);
 
   const firstMedia = media[0] ?? null;
 
   return (
     <div
+      ref={cardRef}
       role="link"
       tabIndex={0}
       onClick={() => window.open(repo.html_url, '_blank')}
@@ -72,12 +94,32 @@ export default function ProjectCard({ repo }: ProjectCardProps) {
               <source src={firstMedia.url} type={`video/${firstMedia.url.split('.').pop()}`} />
             </video>
           ) : (
-            <img
-              src={firstMedia.url}
-              alt={`Imagem do projeto ${repo.name}`}
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
+            staticMedia && firstMedia.url.toLowerCase().endsWith('.gif') ? (
+              <canvas
+                ref={(canvas) => {
+                  if (!canvas) return;
+                  const ctx = canvas.getContext('2d');
+                  if (!ctx) return;
+                  const img = new window.Image();
+                  img.crossOrigin = 'anonymous';
+                  img.onload = () => {
+                    canvas.width = img.naturalWidth;
+                    canvas.height = img.naturalHeight;
+                    ctx.drawImage(img, 0, 0);
+                  };
+                  img.src = firstMedia.url;
+                }}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <img
+                src={firstMedia.url}
+                alt={`Imagem do projeto ${repo.name}`}
+                className="h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            )
           )
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-text-muted">

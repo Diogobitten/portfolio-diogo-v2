@@ -73,3 +73,5 @@ git push origin main
 - Next.js: README fetches go through `/api/github/readme` route (with auth token) instead of direct GitHub API calls from client
 - Next.js: Mobile menu overlay uses `bg-background/95 backdrop-blur-3xl` with `z-[100]` to stay above all canvas elements
 - Next.js: Header uses `z-[100]` to ensure stacking context allows mobile menu to overlay hero animations
+- Next.js: ProjectCard uses Intersection Observer to lazy-load media only when visible (200px rootMargin)
+- Next.js: GIFs on `/projetos` page render as static first-frame via canvas to reduce load; home page keeps animated GIFs
