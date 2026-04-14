@@ -2,9 +2,10 @@
 
 Portfólio pessoal de Diogo Bittencourt — Desenvolvedor Full-stack & Designer Gráfico.
 
-## Live Demo
+## Preview
 
-![Portfólio Diogo Bittencourt](img/portfolio.gif)
+<img width="3840" height="1964" alt="di-page" src="https://github.com/user-attachments/assets/86abc85f-f040-46c3-875c-2141e68beb47" />
+
 
 ## Tech Stack
 
