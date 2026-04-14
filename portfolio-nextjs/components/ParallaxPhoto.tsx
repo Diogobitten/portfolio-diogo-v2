@@ -91,7 +91,7 @@ const ParallaxPhoto = forwardRef<HTMLDivElement, ParallaxPhotoProps>(
           }}
         >
           <Image
-            src="/img/df.png"
+            src={showDamage ? '/img/d3.png' : '/img/df.png'}
             alt="Diogo Bittencourt"
             width={520}
             height={520}
@@ -100,7 +100,7 @@ const ParallaxPhoto = forwardRef<HTMLDivElement, ParallaxPhotoProps>(
           />
           {/* Red damage overlay — same PNG so it follows the silhouette exactly */}
           <Image
-            src="/img/df.png"
+            src={showDamage ? '/img/d3.png' : '/img/df.png'}
             alt=""
             width={520}
             height={520}
