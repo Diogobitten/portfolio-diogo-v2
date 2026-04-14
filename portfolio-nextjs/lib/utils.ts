@@ -15,7 +15,7 @@ export function extractMediaLinks(
   const media: RepoMedia[] = [];
   const seenUrls = new Set<string>();
 
-  const videoExtensions = ['.mp4', '.webm', '.gif'];
+  const videoExtensions = ['.mp4', '.webm'];
 
   function resolveUrl(rawUrl: string): string {
     const trimmed = rawUrl.trim();
