@@ -13,8 +13,8 @@ export default function PortfolioSection({ showAll = false }: PortfolioSectionPr
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(6);
-  const BATCH_SIZE = 6;
+  const [currentPage, setCurrentPage] = useState(1);
+  const PER_PAGE = 6;
 
   useEffect(() => {
     async function fetchRepos() {
@@ -80,26 +80,54 @@ export default function PortfolioSection({ showAll = false }: PortfolioSectionPr
       )}
 
       {/* Repos grid */}
-      {!loading && !error && (
-        <>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {repos.map((repo) => (
-              <ProjectCard key={repo.name} repo={repo} staticMedia={showAll} />
-            ))}
-          </div>
+      {!loading && !error && (() => {
+        const totalPages = showAll ? Math.ceil(repos.length / PER_PAGE) : 1;
+        const displayRepos = showAll
+          ? repos.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE)
+          : repos;
 
-          {!showAll && (
-            <div className="mt-10 flex justify-start">
-              <a
-                href="/projetos"
-                className="rounded-md border border-text-secondary px-6 py-2.5 text-sm font-medium text-text-primary transition-colors hover:bg-surface-light"
-              >
-                Ver mais projetos →
-              </a>
+        return (
+          <>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {displayRepos.map((repo) => (
+                <ProjectCard key={repo.name} repo={repo} staticMedia={showAll} />
+              ))}
             </div>
-          )}
-        </>
-      )}
+
+            {showAll && totalPages > 1 && (
+              <div className="mt-10 flex items-center gap-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => {
+                      setCurrentPage(page);
+                      document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className={`h-9 w-9 rounded-md text-sm font-medium transition-colors ${
+                      page === currentPage
+                        ? 'bg-text-primary text-background'
+                        : 'border border-border text-text-secondary hover:bg-surface-light hover:text-text-primary'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {!showAll && (
+              <div className="mt-10 flex justify-start">
+                <a
+                  href="/projetos"
+                  className="rounded-md border border-text-secondary px-6 py-2.5 text-sm font-medium text-text-primary transition-colors hover:bg-surface-light"
+                >
+                  Ver mais projetos →
+                </a>
+              </div>
+            )}
+          </>
+        );
+      })()}
     </section>
   );
 }
