@@ -25,7 +25,7 @@ interface Spark {
   color: string;
 }
 
-export default function FallingVaders({ onScore, onDamage }: { onScore?: (score: number) => void; onDamage?: () => void }) {
+export default function FallingVaders({ onScore, onDamage, photoRef }: { onScore?: (score: number) => void; onDamage?: () => void; photoRef?: React.RefObject<HTMLDivElement | null> }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -43,6 +43,38 @@ export default function FallingVaders({ onScore, onDamage }: { onScore?: (score:
     img.src = '/img/vader.png';
 
     const mouse = { x: -9999, y: -9999 };
+
+    // Pixel-perfect collision: load df.png into offscreen canvas
+    const dfImg = new window.Image();
+    dfImg.crossOrigin = 'anonymous';
+    dfImg.src = '/img/df.png';
+    let dfCanvas: OffscreenCanvas | HTMLCanvasElement | null = null;
+    let dfCtx: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D | null = null;
+    let dfW = 0;
+    let dfH = 0;
+
+    dfImg.onload = () => {
+      dfW = dfImg.naturalWidth;
+      dfH = dfImg.naturalHeight;
+      if (typeof OffscreenCanvas !== 'undefined') {
+        dfCanvas = new OffscreenCanvas(dfW, dfH);
+      } else {
+        dfCanvas = document.createElement('canvas');
+        dfCanvas.width = dfW;
+        dfCanvas.height = dfH;
+      }
+      dfCtx = dfCanvas.getContext('2d');
+      dfCtx?.drawImage(dfImg, 0, 0);
+    };
+
+    const isPixelOpaque = (localX: number, localY: number): boolean => {
+      if (!dfCtx || !dfCanvas) return false;
+      const px = Math.floor(localX);
+      const py = Math.floor(localY);
+      if (px < 0 || py < 0 || px >= dfW || py >= dfH) return false;
+      const pixel = dfCtx.getImageData(px, py, 1, 1).data;
+      return pixel[3] > 30; // alpha > 30 means opaque enough
+    };
 
     const resize = () => {
       canvas.width = canvas.offsetWidth;
@@ -118,9 +150,48 @@ export default function FallingVaders({ onScore, onDamage }: { onScore?: (score:
           if (v.y > canvas.height + v.size * imgRatio) {
             v.y = -v.size * imgRatio;
             v.x = Math.random() * canvas.width;
-            score--;
-            onScore?.(score);
-            onDamage?.();
+          }
+
+          // Check pixel-perfect collision with df.png
+          if (photoRef?.current && dfCtx) {
+            const canvasRect = canvas.getBoundingClientRect();
+            const photoRect = photoRef.current.getBoundingClientRect();
+            const pLeft = photoRect.left - canvasRect.left;
+            const pTop = photoRect.top - canvasRect.top;
+
+            const vCenterX = v.x + v.wobble + v.size / 2;
+            const vCenterY = v.y + (v.size * imgRatio) / 2;
+
+            // Map vader center to df.png pixel coordinates
+            const relX = (vCenterX - pLeft) / photoRect.width;
+            const relY = (vCenterY - pTop) / photoRect.height;
+            const pixelX = relX * dfW;
+            const pixelY = relY * dfH;
+
+            if (isPixelOpaque(pixelX, pixelY)) {
+              // Damage explosion (red sparks)
+              const cx = v.x + v.wobble + v.size / 2;
+              const cy = v.y + v.size / 2;
+              for (let i = 0; i < 8; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const spd = 1 + Math.random() * 2;
+                sparks.push({
+                  x: cx, y: cy,
+                  vx: Math.cos(angle) * spd,
+                  vy: Math.sin(angle) * spd,
+                  life: 20 + Math.random() * 15,
+                  maxLife: 20 + Math.random() * 15,
+                  size: 1.5 + Math.random() * 2,
+                  color: '#ff4444',
+                });
+              }
+              v.alive = false;
+              v.respawnTimer = RESPAWN_DELAY;
+              score--;
+              onScore?.(score);
+              onDamage?.();
+              continue;
+            }
           }
 
           // Check mouse collision

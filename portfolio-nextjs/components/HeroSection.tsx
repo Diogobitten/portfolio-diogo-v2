@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import GeometricBackground from './GeometricBackground';
 import ParticlesBackground from './ParticlesBackground';
 import ParallaxPhoto from './ParallaxPhoto';
@@ -9,6 +9,7 @@ import FallingVaders from './FallingVaders';
 export default function HeroSection() {
   const [score, setScore] = useState(0);
   const [damageKey, setDamageKey] = useState(0);
+  const photoRef = useRef<HTMLDivElement>(null);
 
   const handleDamage = useCallback(() => {
     setDamageKey((k) => k + 1);
@@ -23,7 +24,7 @@ export default function HeroSection() {
         <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
           {score !== 0 && (
             <p className={`text-sm font-mono mb-12 ${score > 0 ? 'text-text-secondary' : 'text-red-400'}`}>
-              🛸 {score} invader{Math.abs(score) !== 1 ? 's' : ''} {score > 0 ? 'destruído' : 'perdido'}{Math.abs(score) !== 1 ? 's' : ''}
+              🛸 {Math.abs(score)} invader{Math.abs(score) !== 1 ? 's' : ''} {score > 0 ? 'destruído' : 'perdido'}{Math.abs(score) !== 1 ? 's' : ''}
             </p>
           )}
 
@@ -59,10 +60,10 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <ParallaxPhoto damaged={damageKey > 0} key={damageKey} />
+        <ParallaxPhoto ref={photoRef} damageKey={damageKey} />
       </div>
 
-      <FallingVaders onScore={setScore} onDamage={handleDamage} />
+      <FallingVaders onScore={setScore} onDamage={handleDamage} photoRef={photoRef} />
     </section>
   );
 }
