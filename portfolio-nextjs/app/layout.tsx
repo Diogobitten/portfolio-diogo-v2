@@ -14,7 +14,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://diogobittencourt.vercel.app"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://diogobit.vercel.app"
   ),
   title: "Diogo Bittencourt | Portfólio",
   description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Diogo Bittencourt | Portfólio",
     description:
       "Portfólio de Diogo Bittencourt — Desenvolvedor Full-stack & Designer Gráfico.",
-    images: ["/img/diogo.png"],
+    images: [{ url: "/img/diogo.png", width: 1200, height: 1200, alt: "Diogo Bittencourt" }],
     type: "website",
     locale: "pt_BR",
   },
