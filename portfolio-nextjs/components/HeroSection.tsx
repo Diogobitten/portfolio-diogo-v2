@@ -5,11 +5,13 @@ import GeometricBackground from './GeometricBackground';
 import ParticlesBackground from './ParticlesBackground';
 import ParallaxPhoto from './ParallaxPhoto';
 import FallingVaders from './FallingVaders';
+import { useI18n } from '@/lib/i18n/context';
 
 export default function HeroSection() {
   const [score, setScore] = useState(0);
   const [damageKey, setDamageKey] = useState(0);
   const photoRef = useRef<HTMLDivElement>(null);
+  const { t } = useI18n();
 
   const handleDamage = useCallback(() => {
     setDamageKey((k) => k + 1);
@@ -24,7 +26,7 @@ export default function HeroSection() {
         <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
           {score !== 0 && (
             <p className={`text-sm font-mono mb-12 ${score > 0 ? 'text-text-secondary' : 'text-red-400'}`}>
-              🛸 {Math.abs(score)} invader{Math.abs(score) !== 1 ? 's' : ''} {score > 0 ? 'destruído' : 'perdido'}{Math.abs(score) !== 1 ? 's' : ''}
+              🛸 {Math.abs(score)} invader{Math.abs(score) !== 1 ? 's' : ''} {score > 0 ? (Math.abs(score) !== 1 ? t.hero.invadersDestroyedPlural : t.hero.invadersDestroyed) : (Math.abs(score) !== 1 ? t.hero.invadersLostPlural : t.hero.invadersLost)}
             </p>
           )}
 
@@ -33,13 +35,12 @@ export default function HeroSection() {
           </p>
 
           <h1 className="mt-4 text-4xl font-bold leading-tight text-text-primary sm:text-5xl lg:text-6xl">
-            Software{' '}
-            <span className="text-text-secondary">Developer</span> para
-            Web, APIs & Automação
+            {t.hero.title}{' '}
+            <span className="text-text-secondary">{t.hero.titleHighlight}</span> {t.hero.titleEnd}
           </h1>
 
           <p className="mt-6 max-w-lg text-base leading-relaxed text-text-secondary sm:text-lg">
-            Construo APIs, automatizo processos e integro sistemas com experiência em design.
+            {t.hero.description}
           </p>
 
           <div className="mt-8 flex items-center gap-6">
@@ -47,13 +48,13 @@ export default function HeroSection() {
               href="#contato"
               className="rounded-md border border-text-secondary px-6 py-2.5 text-sm font-medium text-text-primary transition-colors hover:bg-surface-light"
             >
-              Fale Comigo
+              {t.hero.cta}
             </a>
             <a
               href="#portfolio"
               className="text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
             >
-              Ver Projetos →
+              {t.hero.viewProjects}
             </a>
           </div>
         </div>

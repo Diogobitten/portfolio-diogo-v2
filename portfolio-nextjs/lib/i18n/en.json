@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "portfolio": "Portfolio",
+    "about": "About Me",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Software",
+    "titleHighlight": "Developer",
+    "titleEnd": "for Web, APIs & Automation",
+    "description": "I build APIs, automate processes and integrate systems with design experience.",
+    "cta": "Contact Me",
+    "viewProjects": "View Projects →",
+    "invadersDestroyed": "destroyed",
+    "invadersDestroyedPlural": "destroyed",
+    "invadersLost": "lost",
+    "invadersLostPlural": "lost"
+  },
+  "portfolio": {
+    "label": "Portfolio",
+    "title": "Discover what I've built",
+    "description": "Projects that reflect my passion for development and design. Each one tells a story of learning and innovation.",
+    "viewMore": "View more projects →",
+    "loadMore": "Load more projects →",
+    "noMedia": "No media",
+    "noDescription": "No description available",
+    "loadError": "Could not load projects. Please try again later."
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Let's talk?",
+    "description": "I'm always open to new opportunities and collaborations. Get in touch through my social networks."
+  },
+  "game": {
+    "label": "Game",
+    "title": "Pong Invaders",
+    "description": "My first project as a developer. I created a game that mixes Space Invaders with Pong. A game built with p5.js.",
+    "playHere": "Play it right here!"
+  },
+  "about": {
+    "subtitle": "Software Developer & Graphic Designer",
+    "downloadCV": "Download CV",
+    "bio1": "I'm a Software Developer graduated in Systems Analysis and Development from FIAP",
+    "bio2": ", with experience in building ",
+    "bio2bold": "APIs, process automation and systems integration.",
+    "bio2cont": " Including solutions with ",
+    "bio2ai": "AI",
+    "bio2platforms": " and platforms like",
+    "bio2services": " ServiceNow, AWS and Azure.",
+    "bio3": "I also have 10 years of background in graphic design, UX/UI and branding",
+    "bio3cont": ", which gives me a unique product vision: I think about both the system logic and the user experience.",
+    "designButton": "Check out the design work →",
+    "stack": "Tech stack:",
+    "stackList": "Python, TypeScript, React, Next.js, Java, SQL, AWS, Azure and ServiceNow.",
+    "stackEnd": "I enjoy solving real problems with",
+    "cleanCode": "clean code",
+    "scalable": "solutions that scale.",
+    "graduated": "Graduated:",
+    "fiap": "FIAP — Systems Analysis and Development"
+  },
+  "footer": {
+    "rights": "© 2025 Diogo Bittencourt. All rights reserved."
+  },
+  "chatbot": {
+    "title": "Diobot",
+    "tooltip": "Hi! See why you should hire Diogo 😄",
+    "placeholder": "Type your message...",
+    "send": "Send",
+    "welcome1": "Hi! 👋 I'm Diobot, Diogo's virtual assistant.",
+    "welcome2": "Ask me anything about Diogo!",
+    "error": "😔 Error connecting to chatbot.",
+    "typing": "typing"
+  }
+}

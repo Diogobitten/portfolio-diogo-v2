@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "portfolio": "Portafolio",
+    "about": "Sobre Mí",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Software",
+    "titleHighlight": "Developer",
+    "titleEnd": "para Web, APIs y Automatización",
+    "description": "Construyo APIs, automatizo procesos e integro sistemas con experiencia en diseño.",
+    "cta": "Contáctame",
+    "viewProjects": "Ver Proyectos →",
+    "invadersDestroyed": "destruido",
+    "invadersDestroyedPlural": "destruidos",
+    "invadersLost": "perdido",
+    "invadersLostPlural": "perdidos"
+  },
+  "portfolio": {
+    "label": "Portafolio",
+    "title": "Descubre lo que he creado",
+    "description": "Proyectos que reflejan mi pasión por el desarrollo y el diseño. Cada uno cuenta una historia de aprendizaje e innovación.",
+    "viewMore": "Ver más proyectos →",
+    "loadMore": "Cargar más proyectos →",
+    "noMedia": "Sin medios",
+    "noDescription": "Sin descripción disponible",
+    "loadError": "No se pudieron cargar los proyectos. Inténtalo de nuevo más tarde."
+  },
+  "contact": {
+    "label": "Contacto",
+    "title": "¿Hablamos?",
+    "description": "Siempre estoy abierto a nuevas oportunidades y colaboraciones. Contáctame a través de mis redes."
+  },
+  "game": {
+    "label": "Juego",
+    "title": "Pong Invaders",
+    "description": "Mi primer proyecto como desarrollador. Creé un juego que mezcla Space Invaders con Pong. Un juego creado con p5.js.",
+    "playHere": "¡Juega directamente aquí!"
+  },
+  "about": {
+    "subtitle": "Software Developer & Diseñador Gráfico",
+    "downloadCV": "Descargar CV",
+    "bio1": "Soy Software Developer graduado en Análisis y Desarrollo de Sistemas por FIAP",
+    "bio2": ", con experiencia en construcción de ",
+    "bio2bold": "APIs, automatización de procesos e integración de sistemas.",
+    "bio2cont": " Incluyendo soluciones con ",
+    "bio2ai": "IA",
+    "bio2platforms": " y plataformas como",
+    "bio2services": " ServiceNow, AWS y Azure.",
+    "bio3": "También tengo 10 años de experiencia en diseño gráfico, UX/UI y branding",
+    "bio3cont": ", lo que me da una visión de producto diferenciada: pienso tanto en la lógica del sistema como en la experiencia del usuario.",
+    "designButton": "Mira los trabajos de diseño →",
+    "stack": "Stack:",
+    "stackList": "Python, TypeScript, React, Next.js, Java, SQL, AWS, Azure y ServiceNow.",
+    "stackEnd": "Me gusta resolver problemas reales con",
+    "cleanCode": "código limpio",
+    "scalable": "soluciones que escalan.",
+    "graduated": "Graduado:",
+    "fiap": "FIAP — Análisis y Desarrollo de Sistemas"
+  },
+  "footer": {
+    "rights": "© 2025 Diogo Bittencourt. Todos los derechos reservados."
+  },
+  "chatbot": {
+    "title": "Diobot",
+    "tooltip": "¡Hola! Mira por qué deberías contratar a Diogo 😄",
+    "placeholder": "Escribe tu mensaje...",
+    "send": "Enviar",
+    "welcome1": "¡Hola! 👋 Soy Diobot, el asistente virtual de Diogo.",
+    "welcome2": "¡Pregúntame lo que quieras sobre Diogo!",
+    "error": "😔 Error al conectar con el chatbot.",
+    "typing": "escribiendo"
+  }
+}

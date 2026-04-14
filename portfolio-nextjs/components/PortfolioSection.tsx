@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { GitHubRepo } from '@/lib/types';
 import { filterRepos, getTopRepos } from '@/lib/utils';
 import ProjectCard from './ProjectCard';
+import { useI18n } from '@/lib/i18n/context';
 
 interface PortfolioSectionProps {
   showAll?: boolean;
@@ -15,6 +16,7 @@ export default function PortfolioSection({ showAll = false }: PortfolioSectionPr
   const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const PER_PAGE = 6;
+  const { t } = useI18n();
 
   useEffect(() => {
     async function fetchRepos() {
@@ -41,14 +43,13 @@ export default function PortfolioSection({ showAll = false }: PortfolioSectionPr
       {/* Section header */}
       <div className="mb-12">
         <span className="text-sm font-medium uppercase tracking-widest text-text-muted">
-          Portfólio
+          {t.portfolio.label}
         </span>
         <h2 className="mt-2 text-3xl font-bold text-text-primary sm:text-4xl">
-          Descubra o que eu criei
+          {t.portfolio.title}
         </h2>
         <p className="mt-3 max-w-2xl text-text-secondary">
-          Projetos que refletem minha paixão por desenvolvimento e design. Cada um conta uma
-          história de aprendizado e inovação.
+          {t.portfolio.description}
         </p>
       </div>
 
@@ -121,7 +122,7 @@ export default function PortfolioSection({ showAll = false }: PortfolioSectionPr
                   href="/projetos"
                   className="rounded-md border border-text-secondary px-6 py-2.5 text-sm font-medium text-text-primary transition-colors hover:bg-surface-light"
                 >
-                  Ver mais projetos →
+                  {t.portfolio.viewMore}
                 </a>
               </div>
             )}

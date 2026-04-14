@@ -1,41 +1,20 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
-import { TRANSLATION_API_URL } from '@/lib/constants';
-import type { SupportedLanguage, TranslationResponse } from '@/lib/types';
+import { useState, useRef, useEffect } from 'react';
+import { useI18n } from '@/lib/i18n/context';
+import type { Locale } from '@/lib/i18n';
 
-const LANGUAGE_OPTIONS: { code: SupportedLanguage; label: string; flag: string }[] = [
+const LANGUAGE_OPTIONS: { code: Locale; label: string; flag: string }[] = [
   { code: 'pt', label: 'PT', flag: '🇧🇷' },
   { code: 'en', label: 'EN', flag: '🇺🇸' },
   { code: 'es', label: 'ES', flag: '🇪🇸' },
 ];
 
-const LS_KEY = 'language';
-
 export default function LanguageSwitcher() {
-  const [language, setLanguage] = useState<SupportedLanguage>('pt');
+  const { locale, setLocale } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
-  const originalTexts = useRef<Map<Element, string>>(new Map());
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Load saved language on mount
-  useEffect(() => {
-    const saved = localStorage.getItem(LS_KEY) as SupportedLanguage | null;
-    if (saved && ['pt', 'en', 'es'].includes(saved)) {
-      storeOriginalTexts();
-      if (saved !== 'pt') {
-        setLanguage(saved);
-        translatePage(saved);
-      } else {
-        setLanguage('pt');
-      }
-    } else {
-      storeOriginalTexts();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Close dropdown on outside click
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -46,58 +25,10 @@ export default function LanguageSwitcher() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  function storeOriginalTexts() {
-    const elements = document.querySelectorAll('[data-translate]');
-    elements.forEach((el) => {
-      if (!originalTexts.current.has(el)) {
-        originalTexts.current.set(el, el.textContent || '');
-      }
-    });
-  }
-
-  async function translatePage(lang: SupportedLanguage) {
-    const elements = document.querySelectorAll('[data-translate]');
-    const promises = Array.from(elements).map(async (el) => {
-      const original = originalTexts.current.get(el) || el.textContent || '';
-      if (!original.trim()) return;
-      try {
-        const res = await fetch(
-          `${TRANSLATION_API_URL}?q=${encodeURIComponent(original)}&langpair=pt|${lang}`
-        );
-        if (!res.ok) return;
-        const data: TranslationResponse = await res.json();
-        el.textContent = data.responseData.translatedText;
-      } catch {
-        console.error('Translation failed for:', original);
-      }
-    });
-    await Promise.all(promises);
-  }
-
-  function restoreOriginalTexts() {
-    originalTexts.current.forEach((text, el) => {
-      el.textContent = text;
-    });
-  }
-
-  async function handleLanguageChange(lang: SupportedLanguage) {
-    setLanguage(lang);
-    localStorage.setItem(LS_KEY, lang);
-    setIsOpen(false);
-
-    storeOriginalTexts();
-
-    if (lang === 'pt') {
-      restoreOriginalTexts();
-    } else {
-      translatePage(lang);
-    }
-  }
-
-  const currentOption = LANGUAGE_OPTIONS.find((o) => o.code === language)!;
+  const currentOption = LANGUAGE_OPTIONS.find((o) => o.code === locale)!;
 
   return (
-    <div className="relative" ref={dropdownRef} aria-label="language-switcher">
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1 text-xs text-text-secondary hover:text-text-primary transition-colors"
@@ -116,9 +47,9 @@ export default function LanguageSwitcher() {
           {LANGUAGE_OPTIONS.map((opt) => (
             <button
               key={opt.code}
-              onClick={() => handleLanguageChange(opt.code)}
+              onClick={() => { setLocale(opt.code); setIsOpen(false); }}
               className={`flex w-full items-center gap-2 px-3 py-1.5 text-xs transition-colors ${
-                opt.code === language
+                opt.code === locale
                   ? 'text-text-primary bg-surface-light'
                   : 'text-text-secondary hover:text-text-primary hover:bg-surface-light'
               }`}

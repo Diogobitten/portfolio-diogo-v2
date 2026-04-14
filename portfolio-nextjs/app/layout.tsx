@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ChatbotWidget from "@/components/ChatbotWidget";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollToTop from "@/components/ScrollToTop";
+import { I18nProvider } from "@/lib/i18n/context";
 import "./globals.css";
 
 const inter = Inter({
@@ -37,12 +38,14 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans bg-background text-foreground">
-        <ScrollToTop />
-        <CustomCursor />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <ChatbotWidget />
+        <I18nProvider>
+          <ScrollToTop />
+          <CustomCursor />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <ChatbotWidget />
+        </I18nProvider>
       </body>
     </html>
   );
