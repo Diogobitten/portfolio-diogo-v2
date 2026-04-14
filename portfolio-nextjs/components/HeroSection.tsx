@@ -39,7 +39,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="mt-6 max-w-lg text-base leading-relaxed text-text-secondary sm:text-lg">
-            Construo APIs, automatizo processos e integro sistemas com background em design. Que faz a diferença na experiência final.
+            Construo APIs, automatizo processos e integro sistemas com experiência em design.
           </p>
 
           <div className="mt-8 flex items-center gap-6">

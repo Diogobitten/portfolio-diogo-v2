@@ -146,7 +146,7 @@ export default function SobreMimPage() {
           <strong className="text-text-primary">
             No stack:{' '}
           </strong>
-          Python, JavaScript, React, Next.js, Java, SQL, AWS, Azure e ServiceNow.
+          Python, TypeScript, React, Next.js, Java, SQL, AWS, Azure e ServiceNow.
           </p>
           <p>
           Gosto de resolver problemas reais com <strong className="text-text-primary">código limpo</strong> e <strong className="text-text-primary">soluções que escalam.</strong>
