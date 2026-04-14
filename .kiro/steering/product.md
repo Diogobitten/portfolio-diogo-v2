@@ -17,7 +17,7 @@ Showcase projects, skills, professional experience, and provide a downloadable C
 - Embedded Pong Invaders game (p5.js, centralizado, dark background, responsivo)
 - Parallax depth effect on hero photo (foreground `df.png` + background `d2.jpg` layers with scroll and mouse interaction)
 - Animated particle network background with mouse interactivity (connection lines + repulsion)
-- Falling Space Invaders (vader.png) with mouse-to-destroy explosion effect and kill score counter
+- Falling Space Invaders (vader.png) with mouse-to-destroy explosion, pixel-perfect collision with player silhouette (df.png), damage sprite swap (d3.png), shake effect, and kill/damage score counter
 - Custom cursor (white dot + trailing ring, replaces default cursor site-wide)
 - Custom dark scrollbar site-wide, extra dark no chatbot
 - DB logo (`db.png`) used as navbar icon and favicon

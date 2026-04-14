@@ -85,4 +85,5 @@
 - `d2.jpg` — Background with geometric elements (background parallax layer)
 - `d1.jpg` — Profile photo with background (unused, replaced by df.png)
 - `db.png` — DB logo (navbar icon + favicon)
-- `vader.png` — Space Invader sprite (falling animation + explosion interaction)
+- `d3.png` — Damage sprite (alternate pose, shown during vader hit with red overlay)
+- `vader.png` — Space Invader sprite (falling animation + explosion interaction + pixel-perfect collision with df.png)

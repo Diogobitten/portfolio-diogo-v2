@@ -33,15 +33,13 @@ export default function HeroSection() {
           </p>
 
           <h1 className="mt-4 text-4xl font-bold leading-tight text-text-primary sm:text-5xl lg:text-6xl">
-            Seu desenvolvedor{' '}
-            <span className="text-text-secondary">Full-stack</span> para
-            projetos Next.js
+            Software{' '}
+            <span className="text-text-secondary">Developer</span> para
+            Web, APIs & Automação
           </h1>
 
           <p className="mt-6 max-w-lg text-base leading-relaxed text-text-secondary sm:text-lg">
-            Transformando ideias em realidade com código limpo, eficiente e
-            escalável. Seja construindo aplicações web, otimizando performance
-            ou resolvendo desafios técnicos complexos.
+            Construo APIs, automatizo processos e integro sistemas com background em design. Que faz a diferença na experiência final.
           </p>
 
           <div className="mt-8 flex items-center gap-6">

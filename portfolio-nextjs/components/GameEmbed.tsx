@@ -13,14 +13,14 @@ export default function GameEmbed() {
           Pong Invaders
         </h2>
         <p className="mt-3 max-w-2xl text-text-secondary">
-          Um jogo criado com p5.js. Jogue diretamente aqui!
+          Meu primeiro projeto como desenvolvedor. Criei um jogo que mistura Space Invaders com Pong. Um jogo criado com p5.js. <b>Jogue diretamente aqui!</b>
         </p>
       </div>
 
       <div className="flex justify-center">
         <iframe
           src={GAME_URL}
-          className="rounded-xl border border-border w-full max-w-[620px] aspect-[620/460]"
+          className="rounded-xl border border-border w-full max-w-[620px] aspect-[610/440]"
           title="Pong Invaders Game"
           style={{ background: '#0a0a0a' }}
           allowFullScreen

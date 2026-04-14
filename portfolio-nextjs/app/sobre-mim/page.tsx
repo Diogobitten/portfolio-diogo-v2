@@ -103,27 +103,34 @@ export default function SobreMimPage() {
       </div>
 
       {/* Description */}
-      <div className="mt-16 space-y-6 text-base leading-relaxed text-text-secondary">
+      <div className="mt-16 space-y-6 text-base leading-relaxed text-text-secondary text-center">
         <p>
           <strong className="text-text-primary">
-            Sou estudante de Análise e Desenvolvimento de Sistemas
+            Sou Software Developer formado em Análise e Desenvolvimento de Sistemas pela FIAP
           </strong>
-          , com foco em me tornar um{' '}
+          , com experiência em{' '}
           <strong className="text-text-primary">Desenvolvedor Full Stack</strong>.
-          Atualmente, estou estudando{' '}
+          Atualmente, estou desenvolvendo{' '}
           <strong className="text-text-primary">
-            JavaScript, Java, Python e HTML/CSS
+            APIs, automação de processos e integração de sistemas.{' '}
           </strong>
-          , sempre buscando novas oportunidades para aprimorar minhas habilidades e
-          trabalhar em projetos desafiadores.
+          Incluindo soluções com{' '}
+           <strong className="text-text-primary">
+          IA{' '}
+          </strong>
+          e plataformas como{' '}
+          <strong className="text-text-primary"> 
+          ServiceNow, AWS e Azure.
+          </strong>
         </p>
 
         <p>
           <strong className="text-text-primary">
-            Com 10 anos de experiência em design
+            Tenho também 10 anos de background em design gráfico, UX/UI e branding
           </strong>
-          , sou especializado em Design Gráfico, Web Design, UX/UI, Branding e Gestão
-          de Projetos.{' '}
+          , o que me dá uma visão de produto diferenciada: penso tanto na lógica do sistema quanto na experiência de quem vai usá-lo.{' '}
+          </p>
+          <p>
           <a
             href={SOCIAL_LINKS.designPortfolio}
             target="_blank"
@@ -136,17 +143,13 @@ export default function SobreMimPage() {
         </p>
 
         <p>
-          Meu objetivo é criar{' '}
           <strong className="text-text-primary">
-            soluções criativas e centradas no usuário
+            No stack:{' '}
           </strong>
-          , que atendam às necessidades dos clientes e proporcionem experiências
-          incríveis. Sou{' '}
-          <strong className="text-text-primary">colaborativo</strong>,{' '}
-          <strong className="text-text-primary">comunicativo</strong> e estou
-          constantemente me atualizando com as tendências do mercado e tecnologias
-          emergentes. Empolgado e preparado para encarar novos desafios que combinem
-          tecnologia e criatividade!
+          Python, JavaScript, React, Next.js, Java, SQL, AWS, Azure e ServiceNow.
+          </p>
+          <p>
+          Gosto de resolver problemas reais com <strong className="text-text-primary">código limpo</strong> e <strong className="text-text-primary">soluções que escalam.</strong>
         </p>
       </div>
 
@@ -154,7 +157,7 @@ export default function SobreMimPage() {
       <div className="mt-16 flex flex-wrap items-center justify-center gap-16">
         {/* FIAP */}
         <div className="flex flex-col items-center">
-          <p className="mb-2 text-xs text-text-muted">Cursando:</p>
+          <p className="mb-2 text-xs text-text-muted">Formado:</p>
           <Image
             src="/img/fiap.png"
             alt="Logo da FIAP"

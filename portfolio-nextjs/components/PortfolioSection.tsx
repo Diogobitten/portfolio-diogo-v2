@@ -79,11 +79,24 @@ export default function PortfolioSection({ showAll = false }: PortfolioSectionPr
 
       {/* Repos grid */}
       {!loading && !error && (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {repos.map((repo) => (
-            <ProjectCard key={repo.name} repo={repo} />
-          ))}
-        </div>
+        <>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {repos.map((repo) => (
+              <ProjectCard key={repo.name} repo={repo} />
+            ))}
+          </div>
+
+          {!showAll && (
+            <div className="mt-10 flex justify-start">
+              <a
+                href="/projetos"
+                className="rounded-md border border-text-secondary px-6 py-2.5 text-sm font-medium text-text-primary transition-colors hover:bg-surface-light"
+              >
+                Ver mais projetos →
+              </a>
+            </div>
+          )}
+        </>
       )}
     </section>
   );
