@@ -14,6 +14,9 @@ const ParallaxPhoto = forwardRef<HTMLDivElement, ParallaxPhotoProps>(
     const [mouseX, setMouseX] = useState(0);
     const [mouseY, setMouseY] = useState(0);
     const [showDamage, setShowDamage] = useState(false);
+    const [gyroX, setGyroX] = useState(0);
+    const [gyroY, setGyroY] = useState(0);
+    const [hasGyro, setHasGyro] = useState(false);
 
     const shakeRef = useRef<HTMLDivElement>(null);
 
@@ -45,6 +48,39 @@ const ParallaxPhoto = forwardRef<HTMLDivElement, ParallaxPhotoProps>(
       handleScroll();
       return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Gyroscope for mobile parallax
+    useEffect(() => {
+      const isMobile = window.matchMedia('(pointer: coarse)').matches;
+      if (!isMobile) return;
+
+      const handleOrientation = (e: DeviceOrientationEvent) => {
+        const gamma = e.gamma || 0; // left-right tilt (-90 to 90)
+        const beta = e.beta || 0;   // front-back tilt (-180 to 180)
+        // Normalize to -1 to 1 range, clamped
+        setGyroX(Math.max(-1, Math.min(1, gamma / 30)));
+        setGyroY(Math.max(-1, Math.min(1, (beta - 45) / 30))); // 45 = natural holding angle
+        setHasGyro(true);
+      };
+
+      // iOS 13+ requires permission
+      const DOE = DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<string> };
+      if (typeof DOE.requestPermission === 'function') {
+        DOE.requestPermission().then((permission) => {
+          if (permission === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation, { passive: true });
+          }
+        }).catch(() => {});
+      } else {
+        window.addEventListener('deviceorientation', handleOrientation, { passive: true });
+      }
+
+      return () => window.removeEventListener('deviceorientation', handleOrientation);
+    }, []);
+
+    // Use gyro on mobile, mouse on desktop
+    const tiltX = hasGyro ? gyroX : mouseX;
+    const tiltY = hasGyro ? gyroY : mouseY;
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
       if (!containerRef.current) return;
@@ -79,7 +115,7 @@ const ParallaxPhoto = forwardRef<HTMLDivElement, ParallaxPhotoProps>(
           priority
           className="object-cover z-0 transition-transform duration-200 ease-out"
           style={{
-            transform: `translate(${mouseX * -8}px, ${scrollOffset * 0.3 + mouseY * -8}px)`,
+            transform: `translate(${tiltX * -8}px, ${scrollOffset * 0.3 + tiltY * -8}px)`,
           }}
         />
         {/* Foreground layer - Diogo (damage effects apply here only) */}
@@ -87,7 +123,7 @@ const ParallaxPhoto = forwardRef<HTMLDivElement, ParallaxPhotoProps>(
           ref={shakeRef}
           className="absolute inset-0 z-10 flex items-center justify-center transition-transform duration-200 ease-out"
           style={{
-            transform: `translate(${mouseX * 15}px, ${scrollOffset * -0.5 + mouseY * 10}px)`,
+            transform: `translate(${tiltX * 15}px, ${scrollOffset * -0.5 + tiltY * 10}px)`,
           }}
         >
           <Image
