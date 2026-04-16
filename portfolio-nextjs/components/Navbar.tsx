@@ -43,7 +43,7 @@ export default function Navbar() {
           </div>
 
           <Link
-            href="#contato"
+            href="/#contato"
             className="rounded-md border border-text-secondary px-4 py-1.5 text-sm text-text-primary hover:bg-surface-light transition-colors"
           >
             {t.nav.contact}

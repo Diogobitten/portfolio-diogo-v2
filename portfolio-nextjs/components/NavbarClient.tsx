@@ -67,7 +67,7 @@ export default function NavbarClient({ navLinks }: NavbarClientProps) {
             </div>
 
             <Link
-              href="#contato"
+              href="/#contato"
               onClick={() => setIsOpen(false)}
               className="rounded-md border border-text-secondary px-6 py-2 text-lg text-text-primary hover:bg-surface-light transition-colors"
             >
